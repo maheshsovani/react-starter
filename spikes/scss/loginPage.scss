@@ -1,0 +1,71 @@
+@import "variables";
+@import "mixins";
+
+html, body {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.header, .footer{
+  width: 100%;
+  height: 10%;
+
+  display: flex;
+  justify-content: flex-start;
+
+  align-items: center;
+  background-color:$curious-blue;
+}
+
+.main{
+  width: 100%;
+  height: 80%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $silver;
+}
+
+.loginAndSignUpForm{
+  width: 75%;
+  height: 80%; 
+  
+  display: flex;
+  flex-direction: column;
+}
+
+.LoginAndSignUpToggleButtons{
+  width: 100%;
+  height: 10%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color:cyan;
+}
+
+.LoginAndSignUpToggleButton{
+  background-color: $buddha-gold;
+}
+
+.loginForm{
+  width: 100%;
+  height: 90%;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: $dusty-gray;
+}
+
+.inputBox{
+  
+}
+
+@include respond-tablet {
+  
+}

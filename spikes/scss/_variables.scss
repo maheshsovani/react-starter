@@ -1,0 +1,42 @@
+$font-size-base: 16px;
+@import "functions";
+
+$alto: #dcdcdc;
+$akaroa: #d9c9ac;
+$black: #000000;
+$buddha-gold: #bd9302;
+$cod-gray: #1b1b1b;
+$crimson: #d71221;
+$curious-blue: #28a0e4;
+$deep-sea-green: #0a6a5c;
+$dusty-gray: #979797;
+$gallery: #ededed;
+$gray: #8f8f8f;
+$jazzberry-jam: #9a0c63;
+$light-gray: #e7e7e7;
+$mine-shaft: #333333;
+$pampas : #f2efec;
+$pig-pink: #fcd5e3;
+$silver: #cccccc;
+$silver-dark: #c4c4c4;
+$silver-slight :#cacaca;
+$swiss-coffee: #dbd8d6;
+$tabasco: #a82b11;
+$tundora: #4b4b4b;
+$westar: #e5dfd9;
+$white: #ffffff;
+$wild-sand: #f5f5f5;
+$medium-gray: #9b9b9b;
+$fgcolor-default: $mine-shaft;
+
+// Breakpoints
+$breakpoints: (
+  sm: 768px,
+  md: 1024px,
+  lg: 1280px
+);
+
+$font-weight-thin: 200;
+$font-weight-book: 400;
+$font-weight-medium: 600;
+$font-weight-heavy: 800;

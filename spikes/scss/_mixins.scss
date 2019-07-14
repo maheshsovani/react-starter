@@ -1,0 +1,19 @@
+@import "variables";
+
+@mixin respond-tablet {
+  @media screen and (min-width:map-get($breakpoints, sm)) {
+    @content;
+  }
+}
+
+@mixin respond-desktop {
+  @media screen and (min-width:map-get($breakpoints, md)) {
+    @content;
+  }
+}
+
+@mixin respond-desktop-lg {
+  @media screen and (min-width:map-get($breakpoints, lg)) {
+    @content;
+  }
+}
