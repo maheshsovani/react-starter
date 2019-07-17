@@ -7,27 +7,31 @@
   <link rel="stylesheet" href="./css/loginPage.css">
 </head>
 
+<script>
+  const selectLogin = function () {
+    document.getElementById('loginButton').style.borderBottom = '1px solid black';
+  }
+
+  const selectSignup = function () {
+    document.getElementById('signupButton').style.borderBottom = '1px solid black';
+  }
+</script>
+
 <body>
-  <header class="header">
-    Tech-Tenaliram
-  </header>
-  <main class="main">
-
-    <div class="loginAndSignUpForm">
-      <div class="LoginAndSignUpToggleButtons">
-        <button class="LoginAndSignUpToggleButton">Login</button>
-        <button class="LoginAndSignUpToggleButton">Sign Up</button>
-      </div>
-      <div class="loginForm">
-        <input type="text" class="inputBox" placeholder="username" />
-        <input type="password" class="passwordBox" placeholder="password" />
-        <input type="submit" class="loginAndSignUpButton">
-      </div>
+  <section>
+    <header class="header">Header-Tech</header>
+    <div class="LoginAndSignUpToggleButtons">
+      <button id="loginButton" class="LoginAndSignUpToggleButton" onclick="selectLogin()">Login</button>
+      <button id="signupButton" class="LoginAndSignUpToggleButton" onclick="selectSignup()">Sign Up</button>
     </div>
-  </main>
-  <footer class="footer">
-    Tech-Tenaliram footer
-  </footer>
+    <main class="main">
+          <div class="inputBoxes">
+            <input type="text" class="inputBox" placeholder="username" />
+            <input type="password" class="passwordBox" placeholder="password" />
+          </div>
+          <input type="submit" class="loginAndSignUpButton">
+    </main>
+    <footer class="footer">Footer-tech</footer>
+  </section>
 </body>
-
 </html>

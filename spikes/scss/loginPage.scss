@@ -1,6 +1,3 @@
-@import "variables";
-@import "mixins";
-
 html, body {
   height: 100vh;
   width: 100%;
@@ -8,64 +5,226 @@ html, body {
   padding: 0;
 }
 
-.header, .footer{
+section {
+  width: 100%;
+  height: 100%;
+}
+
+.header, .footer {
   width: 100%;
   height: 10%;
-
   display: flex;
   justify-content: flex-start;
-
   align-items: center;
-  background-color:$curious-blue;
+  background-color: #28a0e4;
 }
 
-.main{
-  width: 100%;
-  height: 80%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: $silver;
-}
-
-.loginAndSignUpForm{
-  width: 75%;
-  height: 80%; 
-  
-  display: flex;
-  flex-direction: column;
-}
-
-.LoginAndSignUpToggleButtons{
+.LoginAndSignUpToggleButtons {
   width: 100%;
   height: 10%;
-
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  background-color:cyan;
+  justify-content: space-around;
+  border-radius: 10px;
 }
 
-.LoginAndSignUpToggleButton{
-  background-color: $buddha-gold;
+.LoginAndSignUpToggleButton {
+  width: 50%;
+  outline: none;
+  height: 100%;
+  border: none;
 }
 
-.loginForm{
-  width: 100%;
-  height: 90%;
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
+/*# sourceMappingURL=loginPage.scss.map */
 
-  display: flex;
-  flex-direction: column;
-
-  background-color: $dusty-gray;
-}
-
-.inputBox{
-  
-}
-
-@include respond-tablet {
-  
-}
+/*# sourceMappingURL=loginPage.scss.map */
