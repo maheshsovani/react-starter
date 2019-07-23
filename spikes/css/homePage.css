@@ -1,0 +1,168 @@
+html,
+body {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  width: 100%;
+  height: 15%;
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #28a0e4;
+}
+.header .logoAndProfile {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.header .logoAndProfile .logo {
+  display: flex;
+  width: 80%;
+  height: 100%;
+  align-items: center;
+}
+.header .logoAndProfile .viewProfile {
+  display: flex;
+  width: 20%;
+  height: 100%;
+  align-items: center;
+  background-color: cadetblue;
+}
+.header .questionActivities {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  background-color: antiquewhite;
+}
+.header .questionActivities .filter {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background-color: turquoise;
+}
+.header .questionActivities .search {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background-color: greenyellow;
+}
+.header .questionActivities .postQuestion {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background-color: yellow;
+}
+
+.footer {
+  width: 100%;
+  height: 10%;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  background-color: #28a0e4;
+}
+
+.main {
+  width: 100%;
+  height: 75%;
+  position: absolute;
+  top: 15%;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.main .questions {
+  width: 100%;
+  background-color: bisque;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main .questions .questionList {
+  width: 90%;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+}
+.main .questions .questionList .question {
+  display: flex;
+  width: 100%;
+  height: 100px;
+  background-color: lavenderblush;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10px;
+  border: 1px solid black;
+}
+.main .questions .questionList .question .questionSection {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.main .questions .questionList .question .questionSection .questionTitleAndTags {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 60%;
+}
+.main .questions .questionList .question .questionSection .questionTitleAndTags .questionTitle {
+  width: 100%;
+  height: 60%;
+}
+.main .questions .questionList .question .questionSection .questionTitleAndTags .questionTags {
+  width: 100%;
+  height: 40%;
+}
+.main .questions .questionList .question .questionSection .questionInformation {
+  display: flex;
+  width: 100%;
+  height: 40%;
+  background-color: orange;
+}
+.main .questions .questionList .question .questionSection .questionInformation .questionViewAndAnswerCount {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-right: 2px solid blue;
+}
+.main .questions .questionList .question .questionSection .questionInformation .questionPostDetails {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.main .pageNavigator {
+  width: 100%;
+  height: 5%;
+  display: flex;
+  justify-content: space-evenly;
+  min-height: 15px;
+}
+
+/*# sourceMappingURL=homePage.css.map */
