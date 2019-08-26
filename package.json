@@ -10,7 +10,8 @@
     "prepush": "npm run test",
     "start": "rimraf ./build && ./node_modules/.bin/webpack-dev-server",
     "build": "rimraf ./build && ./node_modules/.bin/webpack -p",
-    "test": "jest --config=config/jest.config.js --maxWorkers=5"
+    "test": "jest --config=config/jest.config.js --maxWorkers=5",
+    "scripts": "jest --config test/config.json"
   },
   "repository": {
     "type": "git",
