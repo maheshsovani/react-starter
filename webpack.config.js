@@ -8,7 +8,22 @@ const SRC = path.resolve(__dirname, "src"),
   JS = path.resolve(__dirname, "src/js"),
   BUILD = path.resolve(__dirname, "build");
 
-process.env.NODE_ENV = "development";
+const loaderUtils = require("loader-utils");
+isDevelopment = process.env.NODE_ENV == "development";
+
+function getLocalIdent(context, localIdentName, localName, options) {
+  const fileNameOrFolder = context.resourcePath.match(
+    /index\.module\.(css|scss|sass)$/
+  )
+    ? "[folder]"
+    : "[name]";
+  const className = loaderUtils.interpolateName(
+    context,
+    fileNameOrFolder + "_" + localName,
+    options
+  );
+  return className.replace(".module_", "_");
+}
 
 const config = {
   context: path.resolve(__dirname),
@@ -21,8 +36,8 @@ const config = {
     path: BUILD
   },
   resolve: {
-    extensions: [".jsx", ".js", ".json"],
-    modules: [SRC, NODE_MODULES, JS]
+    extensions: [".jsx", ".js", ".json", ".scss"],
+    modules: [SRC, NODE_MODULES]
   },
   module: {
     rules: [
@@ -40,29 +55,49 @@ const config = {
         use: [{ loader: "url-loader", options: { limit: 10000 } }]
       },
       {
-        test: /\.s?css/,
-        include: [NODE_MODULES, SRC],
-        use: [
+        test: /\.module\.s(a|c)ss$/,
+        loader: [
+          isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: "css-loader",
             options: {
-              publicPath: "../",
-              hmr: process.env.NODE_ENV === "development"
+              modules: {
+                getLocalIdent: getLocalIdent
+              },
+              sourceMap: isDevelopment
             }
           },
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: isDevelopment
+            }
+          }
+        ]
+      },
+      {
+        test: /\.s(a|c)ss$/,
+        exclude: /\.module.(s(a|c)ss)$/,
+        loader: [
+          isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
           "css-loader",
-          "sass-loader"
+          {
+            loader: "sass-loader",
+            options: {
+              // camelCase: true,
+              // localsConvention: 'camelCase',
+              sourceMap: isDevelopment
+            }
+          }
         ]
       }
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css",
-      ignoreOrder: false
+      filename: isDevelopment ? "[name].css" : "[name].[hash].css",
+      chunkFilename: isDevelopment ? "[id].css" : "[id].[hash].css"
     }),
-
     new HtmlWebpackPlugin(
       Object.assign(
         {},

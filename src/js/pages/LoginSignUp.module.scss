@@ -1,0 +1,22 @@
+.app {
+  width: 100%;
+
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.main {
+  width: 100%;
+  min-height: calc(100vh - 200px);
+  font-size: 0.8em;
+  /* margin-top: 2px; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-bottom: 1px solid gray;
+}
