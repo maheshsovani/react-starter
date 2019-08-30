@@ -9,7 +9,9 @@ const SRC = path.resolve(__dirname, "src"),
   BUILD = path.resolve(__dirname, "build");
 
 const loaderUtils = require("loader-utils");
-isDevelopment = process.env.NODE_ENV == "development";
+isDevelopment = process.env.NODE_ENV === "development";
+
+const environment = process.env.NODE_ENV || "development";
 
 function getLocalIdent(context, localIdentName, localName, options) {
   const fileNameOrFolder = context.resourcePath.match(
@@ -123,13 +125,13 @@ const config = {
     ),
     new webpack.DefinePlugin({
       "process.env": {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || "development")
+        NODE_ENV: JSON.stringify(environment || "development")
       }
     })
   ]
 };
 
-if (process.env.NODE_ENV === "production") {
+if (environment === "production") {
   config.plugins.push(new UglifyJSPlugin({ sourceMap: true }));
 } else {
   config.devServer = {

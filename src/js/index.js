@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "react-dom";
+import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { ConnectedRouter } from "connected-react-router";
 import configureStore, { history } from "./store/configure-store";
@@ -15,7 +15,7 @@ const initialState = {
 
 const store = configureStore(initialState);
 
-render(
+ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <App />
