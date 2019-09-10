@@ -11,3 +11,9 @@
 
   background-color: lightblue;
 }
+
+.submitBtn {
+  &:focus {
+    background-color: #007bff;
+  }
+}
