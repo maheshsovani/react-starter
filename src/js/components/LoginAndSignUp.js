@@ -6,7 +6,8 @@ class LoginAndSignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeItem: "login"
+      activeItem: "login",
+      isLoaded: false
     };
   }
 
@@ -31,10 +32,16 @@ class LoginAndSignUp extends Component {
     // console.log(data.get("username"));
     // console.log(data.get("password"));
 
-    fetch("localhost:5000/login")
-      .then(res => res.json())
+    console.log("coming")
+    fetch("/api/login")
+      .then(res => {
+        console.log(res);
+        return res.json()
+      })
       .then(
-        result => {},
+        result => {
+          console.log(result);
+        },
         error => {
           this.setState({
             isLoaded: true,
@@ -53,7 +60,7 @@ class LoginAndSignUp extends Component {
         >
           <Tab eventKey="login" title="Login">
             <Form onSubmit={event => this.handleLogin(event)}>
-              <Form.Group controlId="formBasicUserName">
+              <Form.Group >
                 <Form.Label>Username</Form.Label>
                 <Form.Control
                   name="username"
@@ -61,7 +68,7 @@ class LoginAndSignUp extends Component {
                   placeholder="yourusername"
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicPassword">
+              <Form.Group >
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   name="password"
@@ -84,7 +91,7 @@ class LoginAndSignUp extends Component {
           </Tab>
           <Tab eventKey="signUp" title="Sign Up">
             <Form onSubmit={event => this.handleSignup(event)}>
-              <Form.Group controlId="formBasicEmail">
+              <Form.Group >
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
                   name="email"
@@ -94,7 +101,7 @@ class LoginAndSignUp extends Component {
                   placeholder="e.g. name@something.com"
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicUserName">
+              <Form.Group >
                 <Form.Label>Username</Form.Label>
                 <Form.Control
                   name="username"
@@ -103,7 +110,7 @@ class LoginAndSignUp extends Component {
                   placeholder="yourusername"
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicPassword">
+              <Form.Group >
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   name="password"
@@ -113,7 +120,7 @@ class LoginAndSignUp extends Component {
                   placeholder="********"
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicConfirmPassword">
+              <Form.Group >
                 <Form.Label>Confirm Password</Form.Label>
                 <Form.Control
                   name="confirmPassword"

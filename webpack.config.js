@@ -9,6 +9,7 @@ const SRC = path.resolve(__dirname, "src"),
   BUILD = path.resolve(__dirname, "build");
 
 const loaderUtils = require("loader-utils");
+process.env.NODE_ENV = 'development';
 isDevelopment = process.env.NODE_ENV === "development";
 
 const environment = process.env.NODE_ENV || "development";
@@ -135,6 +136,12 @@ if (environment === "production") {
   config.plugins.push(new UglifyJSPlugin({ sourceMap: true }));
 } else {
   config.devServer = {
+    proxy: {
+      "/api/*": {
+        target: "http://localhost:5000/",
+        secure: "false"
+      }
+    },
     port: 3000,
     host: "0.0.0.0",
     hot: true,
