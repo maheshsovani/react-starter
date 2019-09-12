@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Tab, Tabs, Button, Form } from "react-bootstrap";
 import styles from "./LoginAndSignUp.module.scss";
-import { Redirect } from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 class LoginAndSignUp extends Component {
   constructor(props) {
     super(props);
@@ -18,32 +18,30 @@ class LoginAndSignUp extends Component {
     event.preventDefault();
     const data = new FormData(event.target);
     //TODO: make fetch call to save user data
-    console.log(data.get("email"));
-    console.log(data.get("username"));
-    console.log(data.get("password"));
-    console.log(data.get("confirmPassword"));
+    // console.log(data.get("email"));
+    // console.log(data.get("username"));
+    // console.log(data.get("password"));
+    // console.log(data.get("confirmPassword"));
   }
 
   handleLogin(event) {
     event.preventDefault();
     const data = new FormData(event.target);
     //TODO: make fetch call to login
-    console.log(data.get("username"));
-    console.log(data.get("password"));
+    // console.log(data.get("username"));
+    // console.log(data.get("password"));
 
     fetch("localhost:5000/login")
       .then(res => res.json())
       .then(
-        (result) => {
-          console.log(result);
-        },
-        (error) => {
+        result => {},
+        error => {
           this.setState({
             isLoaded: true,
             error
           });
         }
-      )
+      );
   }
 
   render() {
@@ -54,10 +52,14 @@ class LoginAndSignUp extends Component {
           onSelect={key => this.toggle(key)}
         >
           <Tab eventKey="login" title="Login">
-            <Form onSubmit={(event) => this.handleLogin(event)}>
+            <Form onSubmit={event => this.handleLogin(event)}>
               <Form.Group controlId="formBasicUserName">
                 <Form.Label>Username</Form.Label>
-                <Form.Control name="username" size="lg" placeholder="yourusername" />
+                <Form.Control
+                  name="username"
+                  size="lg"
+                  placeholder="yourusername"
+                />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
@@ -69,13 +71,19 @@ class LoginAndSignUp extends Component {
                 />
               </Form.Group>
               <br />
-              <Button variant="primary" type="submit" size="lg" className={styles.submitBtn} block>
+              <Button
+                variant="primary"
+                type="submit"
+                size="lg"
+                className={styles.submitBtn}
+                block
+              >
                 Submit
               </Button>
             </Form>
           </Tab>
           <Tab eventKey="signUp" title="Sign Up">
-            <Form onSubmit={(event) => this.handleSignup(event)}>
+            <Form onSubmit={event => this.handleSignup(event)}>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
@@ -88,7 +96,12 @@ class LoginAndSignUp extends Component {
               </Form.Group>
               <Form.Group controlId="formBasicUserName">
                 <Form.Label>Username</Form.Label>
-                <Form.Control name="username" id="username" size="lg" placeholder="yourusername" />
+                <Form.Control
+                  name="username"
+                  id="username"
+                  size="lg"
+                  placeholder="yourusername"
+                />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
@@ -111,13 +124,19 @@ class LoginAndSignUp extends Component {
                 />
               </Form.Group>
               <br />
-              <Button variant="primary" type="submit" size="lg" className={styles.submitBtn} block>
+              <Button
+                variant="primary"
+                type="submit"
+                size="lg"
+                className={styles.submitBtn}
+                block
+              >
                 Submit
               </Button>
             </Form>
           </Tab>
         </Tabs>
-      </div >
+      </div>
     );
   }
 }
