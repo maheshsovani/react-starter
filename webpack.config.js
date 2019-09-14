@@ -9,7 +9,7 @@ const SRC = path.resolve(__dirname, "src"),
   BUILD = path.resolve(__dirname, "build");
 
 const loaderUtils = require("loader-utils");
-process.env.NODE_ENV = 'development';
+// process.env.NODE_ENV = 'development';
 isDevelopment = process.env.NODE_ENV === "development";
 
 const environment = process.env.NODE_ENV || "development";

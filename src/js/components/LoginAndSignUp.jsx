@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import { Tab, Tabs, Button, Form } from "react-bootstrap";
 import styles from "./LoginAndSignUp.module.scss";
 import { Redirect } from "react-router-dom";
+import { signUpErrors } from "../constants"
+
 class LoginAndSignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
       activeItem: "login",
-      isLoaded: false
+      isLoaded: false,
+      error: ""
     };
   }
 
@@ -18,22 +21,22 @@ class LoginAndSignUp extends Component {
   handleSignup(event) {
     event.preventDefault();
     const data = new FormData(event.target);
-    //TODO: make fetch call to save user data
-    // console.log(data.get("email"));
-    // console.log(data.get("username"));
-    // console.log(data.get("password"));
-    // console.log(data.get("confirmPassword"));
-  }
 
-  handleLogin(event) {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    //TODO: make fetch call to login
-    // console.log(data.get("username"));
-    // console.log(data.get("password"));
+    let userData = {};
+    userData.email = data.get("email");
+    userData.username = data.get("username");
+    userData.password = data.get("password");
+    userData.confirmPassword = data.get("confirmPassword");
 
-    console.log("coming")
-    fetch("/api/login")
+    if (userData.password !== userData.confirmPassword) {
+      this.setState({ error: signUpErrors.PASSWORD_NOT_MATCHED });
+    }
+
+    fetch("/api/signup", {
+      method: 'POST',
+      body: JSON.stringify(userData),
+      headers: { "Content-Type": "application/json" }
+    })
       .then(res => {
         console.log(res);
         return res.json()
@@ -43,14 +46,11 @@ class LoginAndSignUp extends Component {
           console.log(result);
         },
         error => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
         }
       );
   }
 
+  handleLogin(event) { }
   render() {
     return (
       <div className={styles.formBox}>
@@ -99,6 +99,7 @@ class LoginAndSignUp extends Component {
                   type="email"
                   size="lg"
                   placeholder="e.g. name@something.com"
+                  required
                 />
               </Form.Group>
               <Form.Group >
@@ -108,6 +109,7 @@ class LoginAndSignUp extends Component {
                   id="username"
                   size="lg"
                   placeholder="yourusername"
+                  required
                 />
               </Form.Group>
               <Form.Group >
@@ -118,6 +120,7 @@ class LoginAndSignUp extends Component {
                   type="password"
                   size="lg"
                   placeholder="********"
+                  required
                 />
               </Form.Group>
               <Form.Group >
@@ -128,6 +131,7 @@ class LoginAndSignUp extends Component {
                   type="password"
                   size="lg"
                   placeholder="********"
+                  required
                 />
               </Form.Group>
               <br />
@@ -140,6 +144,7 @@ class LoginAndSignUp extends Component {
               >
                 Submit
               </Button>
+              {this.state.error ? <p>here is error</p> : ""}
             </Form>
           </Tab>
         </Tabs>
