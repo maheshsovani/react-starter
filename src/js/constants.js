@@ -4,3 +4,7 @@ export const signUpErrors = {
   USERNAME_ALREADY_EXISTS:
     "Username is already taken. Please choose other username."
 };
+
+export const loginErrors = {
+  USER_NOT_FOUND: "Username or password might be incorrect."
+};

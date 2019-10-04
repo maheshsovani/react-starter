@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Tab, Tabs, Button, Form } from "react-bootstrap";
 import styles from "./LoginAndSignUp.module.scss";
 import { Redirect } from "react-router-dom";
-import { signUpErrors } from "../constants"
+import { signUpErrors, loginErrors } from "../constants"
 
 class LoginAndSignUp extends Component {
   constructor(props) {
@@ -10,7 +10,9 @@ class LoginAndSignUp extends Component {
     this.state = {
       activeItem: "login",
       isLoaded: false,
-      error: ""
+      loginError: "",
+      signupError: ""
+
     };
   }
 
@@ -18,39 +20,70 @@ class LoginAndSignUp extends Component {
     this.setState({ activeItem: key });
   }
 
-  handleSignup(event) {
-    event.preventDefault();
-    const data = new FormData(event.target);
-
-    let userData = {};
-    userData.email = data.get("email");
-    userData.username = data.get("username");
-    userData.password = data.get("password");
-    userData.confirmPassword = data.get("confirmPassword");
-
-    if (userData.password !== userData.confirmPassword) {
-      this.setState({ error: signUpErrors.PASSWORD_NOT_MATCHED });
-    }
-
+  makeSignupApi(userData) {
     fetch("/api/signup", {
       method: 'POST',
       body: JSON.stringify(userData),
       headers: { "Content-Type": "application/json" }
-    })
-      .then(res => {
-        console.log(res);
-        return res.json()
-      })
-      .then(
-        result => {
-          console.log(result);
-        },
-        error => {
+    }).then(res => {
+      return res.json()
+    }).then(
+      result => {
+        if (result.status) {
+          this.setState({ activeItem: "login" });
+        } else {
+          this.setState({ signupError: signUpErrors.EMAIL_ALREADY_REGISTERED });
         }
-      );
+      },
+      error => {
+      }
+    );
+  }
+  handleSignup(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    const params = ["email", "username", "password", "confirmPassword"];
+    let userData = {};
+    params.forEach(param => {
+      userData[param] = data.get(param)
+    })
+    if (userData.password !== userData.confirmPassword) {
+      this.setState({ signupError: signUpErrors.PASSWORD_NOT_MATCHED });
+    } else {
+      this.makeSignupApi(userData)
+    }
   }
 
-  handleLogin(event) { }
+  handleLogin(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    const params = ["username", "password"];
+    let userData = {};
+    params.forEach(param => {
+      userData[param] = data.get(param)
+    })
+
+    fetch("/api/login", {
+      method: 'POST',
+      body: JSON.stringify(userData),
+      headers: { "Content-Type": "application/json" }
+    }).then(res => {
+      return res.json()
+    }).then(
+      result => {
+        console.log(result)
+        if (result.status) {
+          //redirect to home
+        } else {
+          this.setState({ loginError: loginErrors.USER_NOT_FOUND });
+        }
+      },
+      error => {
+      }
+    );
+
+
+  }
   render() {
     return (
       <div className={styles.formBox}>
@@ -87,6 +120,7 @@ class LoginAndSignUp extends Component {
               >
                 Submit
               </Button>
+              {this.state.loginError ? <p className={styles.error} >{this.state.loginError}</p> : ""}
             </Form>
           </Tab>
           <Tab eventKey="signUp" title="Sign Up">
@@ -144,7 +178,7 @@ class LoginAndSignUp extends Component {
               >
                 Submit
               </Button>
-              {this.state.error ? <p>here is error</p> : ""}
+              {this.state.signupError ? <p className={styles.error} >{this.state.signupError}</p> : ""}
             </Form>
           </Tab>
         </Tabs>
