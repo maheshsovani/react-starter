@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Tab, Tabs, Button, Form } from "react-bootstrap";
+import React, {Component} from "react";
+import {Tab, Tabs, Button, Form} from "react-bootstrap";
 import styles from "./LoginAndSignUp.module.scss";
-import { Redirect } from "react-router-dom";
-import { signUpErrors, loginErrors } from "../constants"
+import {Redirect} from "react-router-dom";
+import {signUpErrors, loginErrors} from "../constants"
 
 class LoginAndSignUp extends Component {
   constructor(props) {
@@ -17,28 +17,29 @@ class LoginAndSignUp extends Component {
   }
 
   toggle(key) {
-    this.setState({ activeItem: key });
+    this.setState({activeItem: key});
   }
 
   makeSignupApi(userData) {
     fetch("/api/signup", {
       method: 'POST',
       body: JSON.stringify(userData),
-      headers: { "Content-Type": "application/json" }
+      headers: {"Content-Type": "application/json"}
     }).then(res => {
       return res.json()
     }).then(
       result => {
         if (result.status) {
-          this.setState({ activeItem: "login" });
+          this.setState({activeItem: "login"});
         } else {
-          this.setState({ signupError: signUpErrors.EMAIL_ALREADY_REGISTERED });
+          this.setState({signupError: signUpErrors.EMAIL_ALREADY_REGISTERED});
         }
       },
       error => {
       }
     );
   }
+
   handleSignup(event) {
     event.preventDefault();
     const data = new FormData(event.target);
@@ -46,9 +47,9 @@ class LoginAndSignUp extends Component {
     let userData = {};
     params.forEach(param => {
       userData[param] = data.get(param)
-    })
+    });
     if (userData.password !== userData.confirmPassword) {
-      this.setState({ signupError: signUpErrors.PASSWORD_NOT_MATCHED });
+      this.setState({signupError: signUpErrors.PASSWORD_NOT_MATCHED});
     } else {
       this.makeSignupApi(userData)
     }
@@ -61,21 +62,20 @@ class LoginAndSignUp extends Component {
     let userData = {};
     params.forEach(param => {
       userData[param] = data.get(param)
-    })
+    });
 
     fetch("/api/login", {
       method: 'POST',
       body: JSON.stringify(userData),
-      headers: { "Content-Type": "application/json" }
+      headers: {"Content-Type": "application/json"}
     }).then(res => {
       return res.json()
     }).then(
       result => {
-        console.log(result)
         if (result.status) {
-          //redirect to home
+          window.location.href = "/home";
         } else {
-          this.setState({ loginError: loginErrors.USER_NOT_FOUND });
+          this.setState({loginError: loginErrors.USER_NOT_FOUND});
         }
       },
       error => {
@@ -84,6 +84,7 @@ class LoginAndSignUp extends Component {
 
 
   }
+
   render() {
     return (
       <div className={styles.formBox}>
@@ -93,7 +94,7 @@ class LoginAndSignUp extends Component {
         >
           <Tab eventKey="login" title="Login">
             <Form onSubmit={event => this.handleLogin(event)}>
-              <Form.Group >
+              <Form.Group>
                 <Form.Label>Username</Form.Label>
                 <Form.Control
                   name="username"
@@ -101,7 +102,7 @@ class LoginAndSignUp extends Component {
                   placeholder="yourusername"
                 />
               </Form.Group>
-              <Form.Group >
+              <Form.Group>
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   name="password"
@@ -110,7 +111,7 @@ class LoginAndSignUp extends Component {
                   placeholder="********"
                 />
               </Form.Group>
-              <br />
+              <br/>
               <Button
                 variant="primary"
                 type="submit"
@@ -120,12 +121,12 @@ class LoginAndSignUp extends Component {
               >
                 Submit
               </Button>
-              {this.state.loginError ? <p className={styles.error} >{this.state.loginError}</p> : ""}
+              {this.state.loginError ? <p className={styles.error}>{this.state.loginError}</p> : ""}
             </Form>
           </Tab>
           <Tab eventKey="signUp" title="Sign Up">
             <Form onSubmit={event => this.handleSignup(event)}>
-              <Form.Group >
+              <Form.Group>
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
                   name="email"
@@ -136,7 +137,7 @@ class LoginAndSignUp extends Component {
                   required
                 />
               </Form.Group>
-              <Form.Group >
+              <Form.Group>
                 <Form.Label>Username</Form.Label>
                 <Form.Control
                   name="username"
@@ -146,7 +147,7 @@ class LoginAndSignUp extends Component {
                   required
                 />
               </Form.Group>
-              <Form.Group >
+              <Form.Group>
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   name="password"
@@ -157,7 +158,7 @@ class LoginAndSignUp extends Component {
                   required
                 />
               </Form.Group>
-              <Form.Group >
+              <Form.Group>
                 <Form.Label>Confirm Password</Form.Label>
                 <Form.Control
                   name="confirmPassword"
@@ -168,7 +169,7 @@ class LoginAndSignUp extends Component {
                   required
                 />
               </Form.Group>
-              <br />
+              <br/>
               <Button
                 variant="primary"
                 type="submit"
@@ -178,7 +179,7 @@ class LoginAndSignUp extends Component {
               >
                 Submit
               </Button>
-              {this.state.signupError ? <p className={styles.error} >{this.state.signupError}</p> : ""}
+              {this.state.signupError ? <p className={styles.error}>{this.state.signupError}</p> : ""}
             </Form>
           </Tab>
         </Tabs>

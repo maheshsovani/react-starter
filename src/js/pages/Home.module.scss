@@ -11,27 +11,3 @@
 
   border-bottom: 1px solid gray;
 }
-
-.searchBox {
-  width: 650px;
-}
-
-.sortLabel {
-  pointer-events: none;
-  cursor: default;
-  background-color: white;
-  color: black;
-  &:hover {
-    background-color: white;
-    color: black;
-  }
-  &:focus {
-    background-color: white;
-    color: black;
-  }
-}
-
-.navFlex {
-  display: flex;
-  justify-content: space-between !important;
-}
