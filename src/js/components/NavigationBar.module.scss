@@ -21,3 +21,15 @@
   display: flex;
   justify-content: space-between !important;
 }
+
+.popup{
+  display: none;
+  z-index: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  font-family: "Ubuntu", sans-serif;
+}
