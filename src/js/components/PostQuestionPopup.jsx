@@ -1,13 +1,15 @@
-import {Button, Form, Navbar} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import React from "react";
 import styles from "./PostQuestionPopup.module.scss";
 
-class PostQuestionPopup extends React.Component {
-  render() {
-    return (
-      <div className={styles.popup}>
+function PostQuestionPopup(props) {
+  return (
+    <div className={styles.popup}>
+      <div className={styles.popupContentWrapper}>
+        <div className={styles.closePopupBtn}>
+          <span aria-hidden="true" onClick={props.closePopup}>&times;</span>
+        </div>
         <div className={styles.popupInner}>
-
           <Form>
             <Form.Group>
               <Form.Label>Title</Form.Label>
@@ -34,15 +36,15 @@ class PostQuestionPopup extends React.Component {
                 placeholder="Add realated Tags. Only ; seperated values. Space not allowed"
               />
             </Form.Group>
-
+            <Button variant="primary" size="lg" block>
+              Post Question
+            </Button>
           </Form>
-          <Button  variant="primary" size="lg" onClick={this.props.closePopup}>
-            Post Question
-          </Button>
+
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default PostQuestionPopup;
