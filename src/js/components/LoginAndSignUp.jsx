@@ -1,8 +1,8 @@
-import React, {Component} from "react";
-import {Tab, Tabs, Button, Form} from "react-bootstrap";
+import React, { Component } from "react";
+import { Tab, Tabs, Button, Form } from "react-bootstrap";
 import styles from "./LoginAndSignUp.module.scss";
-import {Redirect} from "react-router-dom";
-import {signUpErrors, loginErrors} from "../constants"
+import { Redirect } from "react-router-dom";
+import { signUpErrors, loginErrors } from "../constants";
 
 class LoginAndSignUp extends Component {
   constructor(props) {
@@ -12,32 +12,32 @@ class LoginAndSignUp extends Component {
       isLoaded: false,
       loginError: "",
       signupError: ""
-
     };
   }
 
   toggle(key) {
-    this.setState({activeItem: key});
+    this.setState({ activeItem: key });
   }
 
   makeSignupApi(userData) {
-    fetch("/api/signup", {
-      method: 'POST',
+    fetch("/api/user/signup", {
+      method: "POST",
       body: JSON.stringify(userData),
-      headers: {"Content-Type": "application/json"}
-    }).then(res => {
-      return res.json()
-    }).then(
-      result => {
-        if (result.status) {
-          this.setState({activeItem: "login"});
-        } else {
-          this.setState({signupError: signUpErrors.EMAIL_ALREADY_REGISTERED});
-        }
-      },
-      error => {
-      }
-    );
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(res => res.json())
+      .then(
+        result => {
+          if (result.status) {
+            this.setState({ activeItem: "login" });
+          } else {
+            this.setState({
+              signupError: signUpErrors.EMAIL_ALREADY_REGISTERED
+            });
+          }
+        },
+        error => {}
+      );
   }
 
   handleSignup(event) {
@@ -46,12 +46,12 @@ class LoginAndSignUp extends Component {
     const params = ["email", "username", "password", "confirmPassword"];
     let userData = {};
     params.forEach(param => {
-      userData[param] = data.get(param)
+      userData[param] = data.get(param);
     });
     if (userData.password !== userData.confirmPassword) {
-      this.setState({signupError: signUpErrors.PASSWORD_NOT_MATCHED});
+      this.setState({ signupError: signUpErrors.PASSWORD_NOT_MATCHED });
     } else {
-      this.makeSignupApi(userData)
+      this.makeSignupApi(userData);
     }
   }
 
@@ -61,28 +61,27 @@ class LoginAndSignUp extends Component {
     const params = ["username", "password"];
     let userData = {};
     params.forEach(param => {
-      userData[param] = data.get(param)
+      userData[param] = data.get(param);
     });
 
-    fetch("/api/login", {
-      method: 'POST',
+    fetch("/api/user/login", {
+      method: "POST",
       body: JSON.stringify(userData),
-      headers: {"Content-Type": "application/json"}
-    }).then(res => {
-      return res.json()
-    }).then(
-      result => {
-        if (result.status) {
-          window.location.href = "/home";
-        } else {
-          this.setState({loginError: loginErrors.USER_NOT_FOUND});
-        }
-      },
-      error => {
-      }
-    );
-
-
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(res => {
+        return res.json();
+      })
+      .then(
+        result => {
+          if (result.status) {
+            window.location.href = "/home";
+          } else {
+            this.setState({ loginError: loginErrors.USER_NOT_FOUND });
+          }
+        },
+        error => {}
+      );
   }
 
   render() {
@@ -111,7 +110,7 @@ class LoginAndSignUp extends Component {
                   placeholder="********"
                 />
               </Form.Group>
-              <br/>
+              <br />
               <Button
                 variant="primary"
                 type="submit"
@@ -121,7 +120,11 @@ class LoginAndSignUp extends Component {
               >
                 Submit
               </Button>
-              {this.state.loginError ? <p className={styles.error}>{this.state.loginError}</p> : ""}
+              {this.state.loginError ? (
+                <p className={styles.error}>{this.state.loginError}</p>
+              ) : (
+                ""
+              )}
             </Form>
           </Tab>
           <Tab eventKey="signUp" title="Sign Up">
@@ -169,7 +172,7 @@ class LoginAndSignUp extends Component {
                   required
                 />
               </Form.Group>
-              <br/>
+              <br />
               <Button
                 variant="primary"
                 type="submit"
@@ -179,7 +182,11 @@ class LoginAndSignUp extends Component {
               >
                 Submit
               </Button>
-              {this.state.signupError ? <p className={styles.error}>{this.state.signupError}</p> : ""}
+              {this.state.signupError ? (
+                <p className={styles.error}>{this.state.signupError}</p>
+              ) : (
+                ""
+              )}
             </Form>
           </Tab>
         </Tabs>
