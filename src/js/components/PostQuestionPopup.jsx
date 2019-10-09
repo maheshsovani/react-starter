@@ -3,6 +3,21 @@ import React from "react";
 import styles from "./PostQuestionPopup.module.scss";
 
 function PostQuestionPopup(props) {
+  function handlePostQuestion(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    let question = {};
+    question["title"] = data.get("title");
+    question["description"] = data.get("description");
+    question["tags"] = data.get("tags").split(/[, ;]+/);
+
+    fetch("/api/addQuestion", {
+      method: 'POST',
+      body: JSON.stringify(question),
+      headers: {"Content-Type": "application/json"}
+    }).then(r => console.log(r.json()))
+  }
+
   return (
     <div className={styles.popup}>
       <div className={styles.popupContentWrapper}>
@@ -10,7 +25,7 @@ function PostQuestionPopup(props) {
           <span aria-hidden="true" onClick={props.closePopup}>&times;</span>
         </div>
         <div className={styles.popupInner}>
-          <Form>
+          <Form onSubmit={event => handlePostQuestion(event)}>
             <Form.Group>
               <Form.Label>Title</Form.Label>
               <Form.Control
@@ -22,6 +37,7 @@ function PostQuestionPopup(props) {
             <Form.Group>
               <Form.Label>Description</Form.Label>
               <Form.Control
+                name="decription"
                 as="textarea"
                 rows="3"
                 size="lg"
