@@ -1,12 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styles from "./NavigationBar.module.scss";
-import {Button, Form, FormControl, InputGroup, Modal, Navbar, ToggleButton, ToggleButtonGroup} from "react-bootstrap";
-import PostQuestionPopup from "./PostQuestionPopup";
+import { Button, Form, FormControl, InputGroup, Modal, Navbar, ToggleButton, ToggleButtonGroup } from "react-bootstrap";
+import PostQuestion from "./PostQuestion";
 
 function NavigationBar() {
-  const [showPopup, setShowPopup] = useState(true);
-  const handleClose = () => setShowPopup(false);
-  const handleShow = () => setShowPopup(true);
   return (
     <Navbar bg="light" expand="lg" className={styles.navFlex}>
       <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
@@ -37,16 +34,7 @@ function NavigationBar() {
           </InputGroup.Append>
         </InputGroup>
       </Form>
-      <Button variant="primary" size="lg" onClick={handleShow}>
-        Post Question
-      </Button>
-      {showPopup ?
-        <PostQuestionPopup
-          text='Close Me'
-          closePopup={handleClose}
-        />
-        : null
-      }
+      <PostQuestion />
     </Navbar>
   )
 }
